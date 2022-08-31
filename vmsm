@@ -197,3 +197,27 @@ if [ "${userinput}" == "port"  ]|[ "${userinput2}" == "close"  ]; then
 	echo -e "================================="
 fi
 
+# Install Java JDk
+
+if [ "${userinput}" == "java"  ]|[ "${userinput2}" == "install"  ]; then
+	echo -e ""
+	read -r -p "Do you want to install Java 17 JDK? [Y/n] " input
+	 
+	case $input in
+		  [yY][eE][sS]|[yY])
+				sudo apt-get install openjdk-17-jdk
+				echo -e ""
+				echo -e "\033[4;33m openjdk 17 installed \033[0m"
+				echo -e "Check java version: java --version"
+				;;
+		  [nN][oO]|[nN])
+				echo "Quiting"
+				;;
+		  *)
+				echo "Invalid input..."
+				exit 1
+				;;
+	esac
+	echo -e "================================="
+fi
+
