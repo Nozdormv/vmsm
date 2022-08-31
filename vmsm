@@ -1,0 +1,59 @@
+#!/bin/bash
+# Author: Nozdormv
+# Purpose: VM Management Script
+
+userinput="${1}"
+userinput2="${2}"
+
+# Update de server vm
+if [ "${userinput}" == "server"  ]|[ "${userinput2}" == "update"  ]; then
+	echo -e ""
+	read -r -p "Do you want to update the VM? [Y/n] " input
+	 
+	case $input in
+		  [yY][eE][sS]|[yY])
+				sudo apt-get update & sudo apt-get upgrade
+				echo -e ""
+				echo -e "\033[4;33m Server updated \033[0m"
+				;;
+		  [nN][oO]|[nN])
+				echo "Quiting"
+				;;
+		  *)
+				echo "Invalid input..."
+				exit 1
+				;;
+	esac
+	echo -e "================================="
+fi
+
+# Install Screen
+
+if [ "${userinput}" == "screen"  ]; then
+	echo -e ""
+	echo -e "Screen Commands : https://linuxize.com/post/how-to-use-linux-screen/"
+	echo -e "screen install : Install screen"
+	echo -e "screen -version : Check screen version"
+	echo -e "================================="
+fi
+
+if [ "${userinput}" == "screen"  ]|[ "${userinput2}" == "install"  ]; then
+	echo -e ""
+	read -r -p "Do you want to update the VM? [Y/n] " input
+	 
+	case $input in
+		  [yY][eE][sS]|[yY])
+				sudo apt-get update & sudo apt-get install screen
+				echo -e ""
+				echo -e "\033[4;33m Screen installed \033[0m"
+				;;
+		  [nN][oO]|[nN])
+				echo "Quiting"
+				;;
+		  *)
+				echo "Invalid input..."
+				exit 1
+				;;
+	esac
+	echo -e "================================="
+fi
