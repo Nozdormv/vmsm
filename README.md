@@ -1,8 +1,8 @@
 # vmsm
 VM Server Management
-
+<br>
 # Installation
-
-"wget https://github.com/byronbutlerorg/vmsm/archive/vmsm"
-"sudo apt install git"
-"git clone https://github.com/byronbutlerorg/vmsm.git)"
+<br>
+"wget https://github.com/byronbutlerorg/vmsm/archive/vmsm" <br>
+"sudo apt install git" <br>
+"git clone https://github.com/byronbutlerorg/vmsm.git)" <br>
