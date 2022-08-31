@@ -1,6 +1,7 @@
 #!/bin/bash
 # Author: Nozdormv
 # Purpose: VM Management Script
+# Version: 1.0.0
 
 userinput="${1}"
 userinput2="${2}"
@@ -221,3 +222,11 @@ if [ "${userinput}" == "java"  ]|[ "${userinput2}" == "install"  ]; then
 	echo -e "================================="
 fi
 
+# Update VMSM
+
+if [ "${userinput}" == "update"  ]; then
+	echo -e ""
+	git clone https://github.com/byronbutlerorg/vmsm.git
+	echo -e "VMSM updated"
+	echo -e "================================="
+fi
