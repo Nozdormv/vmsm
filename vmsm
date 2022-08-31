@@ -230,3 +230,26 @@ if [ "${userinput}" == "update"  ]; then
 	echo -e "VMSM updated"
 	echo -e "================================="
 fi
+
+# Add new user
+
+if [ "${userinput}" == "user"  ]|[ "${userinput2}" == "add"  ]; then
+	echo -e ""
+	echo -e "Enter username"
+	read username
+	adduser $username
+	echo -e "$user user added"
+	echo -e "================================="
+fi
+
+# Remove user
+
+if [ "${userinput}" == "user"  ]|[ "${userinput2}" == "remove"  ]; then
+	echo -e ""
+	echo -e "Enter username"
+	read username
+	deluser $username
+	echo -e "$user user removed"
+	echo -e "================================="
+fi
+
