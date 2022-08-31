@@ -6,6 +6,7 @@ userinput="${1}"
 userinput2="${2}"
 
 # Update de server vm
+
 if [ "${userinput}" == "server"  ]|[ "${userinput2}" == "update"  ]; then
 	echo -e ""
 	read -r -p "Do you want to update the VM? [Y/n] " input
@@ -39,13 +40,84 @@ fi
 
 if [ "${userinput}" == "screen"  ]|[ "${userinput2}" == "install"  ]; then
 	echo -e ""
-	read -r -p "Do you want to update the VM? [Y/n] " input
+	read -r -p "Do you want to install screen? [Y/n] " input
 	 
 	case $input in
 		  [yY][eE][sS]|[yY])
 				sudo apt-get update & sudo apt-get install screen
 				echo -e ""
 				echo -e "\033[4;33m Screen installed \033[0m"
+				echo -e "Check screen version with: screen -v"
+				;;
+		  [nN][oO]|[nN])
+				echo "Quiting"
+				;;
+		  *)
+				echo "Invalid input..."
+				exit 1
+				;;
+	esac
+	echo -e "================================="
+fi
+
+# Install zip
+
+if [ "${userinput}" == "zip"  ]|[ "${userinput2}" == "install"  ]; then
+	echo -e ""
+	read -r -p "Do you want to install zip? [Y/n] " input
+	 
+	case $input in
+		  [yY][eE][sS]|[yY])
+				sudo apt install zip & sudo apt install unzip
+				echo -e ""
+				echo -e "\033[4;33m Zip installed \033[0m"
+				echo -e "Check zip version with: zip -v"
+				;;
+		  [nN][oO]|[nN])
+				echo "Quiting"
+				;;
+		  *)
+				echo "Invalid input..."
+				exit 1
+				;;
+	esac
+	echo -e "================================="
+fi
+
+# Install gzip
+if [ "${userinput}" == "gzip"  ]|[ "${userinput2}" == "install"  ]; then
+	echo -e ""
+	read -r -p "Do you want to install gzip? [Y/n] " input
+	 
+	case $input in
+		  [yY][eE][sS]|[yY])
+				sudo apt install gzip
+				echo -e ""
+				echo -e "\033[4;33m gzip installed \033[0m"
+				echo -e "Check gzip version with: gzip -v"
+				;;
+		  [nN][oO]|[nN])
+				echo "Quiting"
+				;;
+		  *)
+				echo "Invalid input..."
+				exit 1
+				;;
+	esac
+	echo -e "================================="
+fi
+
+# Install curl
+if [ "${userinput}" == "curl"  ]|[ "${userinput2}" == "install"  ]; then
+	echo -e ""
+	read -r -p "Do you want to install curl? [Y/n] " input
+	 
+	case $input in
+		  [yY][eE][sS]|[yY])
+				sudo apt install curl
+				echo -e ""
+				echo -e "\033[4;33m curl installed \033[0m"
+				echo -e "Check gzip version with: curl --version"
 				;;
 		  [nN][oO]|[nN])
 				echo "Quiting"
