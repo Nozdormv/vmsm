@@ -1,4 +1,4 @@
 # vmsm
 VM Server Management
 
-"wget https://github.com/byronbutlerorg/vmsm/blob/main/vmsm"
+"wget https://github.com/byronbutlerorg/vmsm.git"
