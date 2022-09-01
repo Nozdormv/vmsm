@@ -6,9 +6,58 @@
 userinput="${1}"
 userinput2="${2}"
 
+# Server first setup
+
+if [ "${userinput}" == "server"  ] && [ "${userinput2}" == "setup"  ]; then
+	echo -e ""
+	read -r -p "Do you want to first setup the VM? [Y/n] " input
+	 
+	case $input in
+		  [yY][eE][sS]|[yY])
+				sudo apt-get update; sudo apt-get upgrade;
+				sleep 0.3
+				echo -e ""
+				echo -e "Installing Screen"
+				echo -e ""
+				sudo apt-get install screen
+				sleep 0.3
+				echo -e ""
+				echo -e "Installing ZIP"
+				echo -e ""
+				sudo apt install zip; sudo apt install unzip
+				sleep 0.3
+				echo -e ""
+				echo -e "Installing Curl"
+				echo -e ""
+				sudo apt install curl
+				sleep 0.3
+				echo -e ""
+				echo -e "Installing NodeJS"
+				echo -e ""
+				sudo apt install -y nodejs
+				sleep 0.3
+				echo -e ""
+				echo -e "Installing Java 17 JDK"
+				echo -e ""
+				sudo apt-get install openjdk-17-jdk
+				sleep 0.3
+				echo -e ""
+				echo -e "\033[4;33m Server setup done. \033[0m"
+				;;
+		  [nN][oO]|[nN])
+				echo "Quiting"
+				;;
+		  *)
+				echo "Invalid input..."
+				exit 1
+				;;
+	esac
+	echo -e "================================="
+fi
+
 # Update de server vm
 
-if [ "${userinput}" == "server"  ]|[ "${userinput2}" == "update"  ]; then
+if [ "${userinput}" == "server"  ] && [ "${userinput2}" == "update"  ]; then
 	echo -e ""
 	read -r -p "Do you want to update the VM? [Y/n] " input
 	 
@@ -31,7 +80,7 @@ fi
 
 # Install Screen
 
-if [ "${userinput}" == "screen"  ]; then
+if [ "${userinput}" == "screen"  ] && [ "${userinput2}" == "help"  ]; then
 	echo -e ""
 	echo -e "Screen Commands : https://linuxize.com/post/how-to-use-linux-screen/"
 	echo -e "screen install : Install screen"
@@ -39,7 +88,7 @@ if [ "${userinput}" == "screen"  ]; then
 	echo -e "================================="
 fi
 
-if [ "${userinput}" == "screen"  ]|[ "${userinput2}" == "install"  ]; then
+if [ "${userinput}" == "screen"  ] && [ "${userinput2}" == "install"  ]; then
 	echo -e ""
 	read -r -p "Do you want to install screen? [Y/n] " input
 	 
@@ -63,7 +112,7 @@ fi
 
 # Install zip
 
-if [ "${userinput}" == "zip"  ]|[ "${userinput2}" == "install"  ]; then
+if [ "${userinput}" == "zip"  ] && [ "${userinput2}" == "install"  ]; then
 	echo -e ""
 	read -r -p "Do you want to install zip? [Y/n] " input
 	 
@@ -88,7 +137,7 @@ fi
 
 # Install gzip
 
-if [ "${userinput}" == "gzip"  ]|[ "${userinput2}" == "install"  ]; then
+if [ "${userinput}" == "gzip"  ] && [ "${userinput2}" == "install"  ]; then
 	echo -e ""
 	read -r -p "Do you want to install gzip? [Y/n] " input
 	 
@@ -112,7 +161,7 @@ fi
 
 # Install curl
 
-if [ "${userinput}" == "curl"  ]|[ "${userinput2}" == "install"  ]; then
+if [ "${userinput}" == "curl"  ] && [ "${userinput2}" == "install"  ]; then
 	echo -e ""
 	read -r -p "Do you want to install curl? [Y/n] " input
 	 
@@ -134,17 +183,9 @@ if [ "${userinput}" == "curl"  ]|[ "${userinput2}" == "install"  ]; then
 	echo -e "================================="
 fi
 
-# Install LinuxGSM
-
-if [ "${userinput}" == "linuxgsm"  ]; then
-	echo -e ""
-	echo -e "Use LinuxGSM here : https://linuxgsm.com/"
-	echo -e "================================="
-fi
-
 # Install NodeJS
 
-if [ "${userinput}" == "nodejs"  ]|[ "${userinput2}" == "install"  ]; then
+if [ "${userinput}" == "nodejs"  ] && [ "${userinput2}" == "install"  ]; then
 	echo -e ""
 	read -r -p "Do you want to install NodeJS? [Y/n] " input
 	 
@@ -167,7 +208,7 @@ fi
 
 # Add a user to sudoers folder
 
-if [ "${userinput}" == "sudoers"  ]|[ "${userinput2}" == "add"  ]; then
+if [ "${userinput}" == "sudoers"  ] && [ "${userinput2}" == "add"  ]; then
 	echo -e ""
 	echo -e "Enter user name"
 	read user
@@ -178,7 +219,7 @@ fi
 
 # Open a port
 
-if [ "${userinput}" == "port"  ]|[ "${userinput2}" == "open"  ]; then
+if [ "${userinput}" == "port"  ] && [ "${userinput2}" == "open"  ]; then
 	echo -e ""
 	echo -e "Enter port"
 	read port
@@ -189,7 +230,7 @@ fi
 
 # Close a port
 
-if [ "${userinput}" == "port"  ]|[ "${userinput2}" == "close"  ]; then
+if [ "${userinput}" == "port"  ] && [ "${userinput2}" == "close"  ]; then
 	echo -e ""
 	echo -e "Enter port"
 	read port
@@ -200,7 +241,7 @@ fi
 
 # Install Java JDk
 
-if [ "${userinput}" == "java"  ]|[ "${userinput2}" == "install"  ]; then
+if [ "${userinput}" == "java"  ] && [ "${userinput2}" == "install"  ]; then
 	echo -e ""
 	read -r -p "Do you want to install Java 17 JDK? [Y/n] " input
 	 
@@ -228,12 +269,13 @@ if [ "${userinput}" == "update"  ]; then
 	echo -e ""
 	git clone https://github.com/byronbutlerorg/vmsm.git
 	echo -e "VMSM updated"
+	echo -e ""
 	echo -e "================================="
 fi
 
 # Add new user
 
-if [ "${userinput}" == "user"  ]|[ "${userinput2}" == "add"  ]; then
+if [ "${userinput}" == "user"  ] && [ "${userinput2}" == "add"  ]; then
 	echo -e ""
 	echo -e "Enter username"
 	read username
@@ -244,7 +286,7 @@ fi
 
 # Remove user
 
-if [ "${userinput}" == "user"  ]|[ "${userinput2}" == "remove"  ]; then
+if [ "${userinput}" == "user"  ] && [ "${userinput2}" == "remove"  ]; then
 	echo -e ""
 	echo -e "Enter username"
 	read username
@@ -253,3 +295,140 @@ if [ "${userinput}" == "user"  ]|[ "${userinput2}" == "remove"  ]; then
 	echo -e "================================="
 fi
 
+# Help LinuxGSM
+
+if [ "${userinput}" == "linuxgsm"  ] && [ "${userinput2}" == "help"  ]; then
+	echo -e ""
+	echo -e "Create server games using LinuxGSM"
+	echo -e "https://linuxgsm.com/servers/"
+	echo -e "Use 'linuxgsm gamename' to start the installation."
+	echo -e "================================="
+fi
+
+# Install LinuxGSM
+
+if [ "${userinput}" == "linuxgsm"  ] && [ "${userinput2}" == "install"  ]; then
+	echo -e ""
+	echo -e "LinuxGSM: What server game do you like to install?"
+	read game
+	if [ "$game" == "minecraft" ]; then
+		echo -e ""
+		echo -e "Installing Minecraft Java for Ubuntu 20.10"
+		echo -e "[\033[1;33m WARN \033[0m] Remember to create a new user and add it to sudoers file before run this command."
+"
+		
+		read -r -p "Continue? [Y/n] " input
+		 
+		case $input in
+			  [yY][eE][sS]|[yY])
+					sudo dpkg --add-architecture i386; sudo apt update; sudo apt install curl wget file tar bzip2 gzip unzip bsdmainutils python3 util-linux ca-certificates binutils bc jq tmux netcat openjdk-17-jre
+					sleep 0.3
+					echo -e ""
+					echo -e "Installing GameDig"
+					echo -e ""
+					curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+					sudo apt update && sudo apt install -y nodejs
+					sleep 0.3
+					npm install gamedig -g
+					sleep 0.3
+					echo -e "Downloading linuxgsm.sh"
+					echo -e ""
+					wget -O linuxgsm.sh https://linuxgsm.sh && chmod +x linuxgsm.sh && bash linuxgsm.sh mcserver
+					sleep 0.3
+					echo -e "Installing Minecraft Java edition"
+					echo -e ""
+					./mcserver install
+					sleep 0.3
+					echo -e "LinuxGSM Minecraft java edition installation done."
+					;;
+			  [nN][oO]|[nN])
+					echo "Quiting"
+					;;
+			  *)
+					echo "Invalid input..."
+					exit 1
+					;;
+		esac
+
+
+		elif [ "$game" == "rust" ]; then
+			echo -e ""
+			echo -e "Installing Rust for Ubuntu 20.10"
+			echo -e "[\033[1;33m WARN \033[0m] Remember to create a new user and add it to sudoers file before run this command."
+	"
+			
+			read -r -p "Continue? [Y/n] " input
+			 
+			case $input in
+				  [yY][eE][sS]|[yY])
+						sudo dpkg --add-architecture i386; sudo apt update; sudo apt install curl wget file tar bzip2 gzip unzip bsdmainutils python3 util-linux ca-certificates binutils bc jq tmux netcat lib32gcc-s1 lib32stdc++6 libsdl2-2.0-0:i386 steamcmd lib32z1
+						sleep 0.3
+						echo -e ""
+						echo -e "Installing GameDig"
+						echo -e ""
+						curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+						sudo apt update && sudo apt install -y nodejs
+						sleep 0.3
+						npm install gamedig -g
+						sleep 0.3
+						echo -e "Downloading linuxgsm.sh"
+						echo -e ""
+						wget -O linuxgsm.sh https://linuxgsm.sh && chmod +x linuxgsm.sh && bash linuxgsm.sh rustserver
+						sleep 0.3
+						echo -e "Installing Minecraft Java edition"
+						echo -e ""
+						./rustserver install
+						sleep 0.3
+						echo -e "LinuxGSM Rust installation done."
+						;;
+				  [nN][oO]|[nN])
+						echo "Quiting"
+						;;
+				  *)
+						echo "Invalid input..."
+						exit 1
+						;;
+			esac
+			
+					elif [ "$game" == "7days" ]; then
+			echo -e ""
+			echo -e "Installing 7 Days to die for Ubuntu 20.10"
+			echo -e "[\033[1;33m WARN \033[0m] Remember to create a new user named "sdtdserver" and add it to sudoers file before run this command."
+	"
+			
+			read -r -p "Continue? [Y/n] " input
+			 
+			case $input in
+				  [yY][eE][sS]|[yY])
+						sudo dpkg --add-architecture i386; sudo apt update; sudo apt install curl wget file tar bzip2 gzip unzip bsdmainutils python3 util-linux ca-certificates binutils bc jq tmux netcat lib32gcc-s1 lib32stdc++6 libsdl2-2.0-0:i386 steamcmd telnet expect
+						sleep 0.3
+						echo -e ""
+						echo -e "Installing GameDig"
+						echo -e ""
+						curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+						sudo apt update && sudo apt install -y nodejs
+						sleep 0.3
+						npm install gamedig -g
+						sleep 0.3
+						echo -e "Downloading linuxgsm.sh"
+						echo -e ""
+						wget -O linuxgsm.sh https://linuxgsm.sh && chmod +x linuxgsm.sh && bash linuxgsm.sh sdtdserver
+						sleep 0.3
+						echo -e "Installing 7 Days to die"
+						echo -e ""
+						./sdtdserver install
+						sleep 0.3
+						echo -e "LinuxGSM 7 Days to die installation done."
+						;;
+				  [nN][oO]|[nN])
+						echo "Quiting"
+						;;
+				  *)
+						echo "Invalid input..."
+						exit 1
+						;;
+			esac
+
+	fi
+	echo -e "================================="
+fi
