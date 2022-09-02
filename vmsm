@@ -45,10 +45,10 @@ if [ "${userinput}" == "server"  ] && [ "${userinput2}" == "setup"  ]; then
 				echo -e "[1;32m OK \033[0m] Server setup done."
 				;;
 		  [nN][oO]|[nN])
-				echo "Quiting"
+				echo "[1;33m WARN \033[0m] Quiting"
 				;;
 		  *)
-				echo "Invalid input..."
+				echo "[1;31m ERROR \033[0m] Invalid input..."
 				exit 1
 				;;
 	esac
@@ -68,10 +68,10 @@ if [ "${userinput}" == "server"  ] && [ "${userinput2}" == "update"  ]; then
 				echo -e "[1;32m OK \033[0m] Server updated"
 				;;
 		  [nN][oO]|[nN])
-				echo "Quiting"
+				echo "[1;33m WARN \033[0m] Quiting"
 				;;
 		  *)
-				echo "Invalid input..."
+				echo "[1;31m ERROR \033[0m] Invalid input..."
 				exit 1
 				;;
 	esac
@@ -100,10 +100,10 @@ if [ "${userinput}" == "screen"  ] && [ "${userinput2}" == "install"  ]; then
 				echo -e "Check screen version with: screen -v"
 				;;
 		  [nN][oO]|[nN])
-				echo "Quiting"
+				echo "[1;33m WARN \033[0m] Quiting"
 				;;
 		  *)
-				echo "Invalid input..."
+				echo "[1;31m ERROR \033[0m] Invalid input..."
 				exit 1
 				;;
 	esac
@@ -125,10 +125,10 @@ if [ "${userinput}" == "zip"  ] && [ "${userinput2}" == "install"  ]; then
 				echo -e "Compress a file with: zip -r name.zip file"
 				;;
 		  [nN][oO]|[nN])
-				echo "Quiting"
+				echo "[1;33m WARN \033[0m] Quiting"
 				;;
 		  *)
-				echo "Invalid input..."
+				echo "[1;31m ERROR \033[0m] Invalid input..."
 				exit 1
 				;;
 	esac
@@ -149,10 +149,10 @@ if [ "${userinput}" == "gzip"  ] && [ "${userinput2}" == "install"  ]; then
 				echo -e "Check gzip version with: gzip -v"
 				;;
 		  [nN][oO]|[nN])
-				echo "Quiting"
+				echo "[1;33m WARN \033[0m] Quiting"
 				;;
 		  *)
-				echo "Invalid input..."
+				echo "[1;31m ERROR \033[0m] Invalid input..."
 				exit 1
 				;;
 	esac
@@ -173,10 +173,10 @@ if [ "${userinput}" == "curl"  ] && [ "${userinput2}" == "install"  ]; then
 				echo -e "Check gzip version with: curl --version"
 				;;
 		  [nN][oO]|[nN])
-				echo "Quiting"
+				echo "[1;33m WARN \033[0m] Quiting"
 				;;
 		  *)
-				echo "Invalid input..."
+				echo "[1;31m ERROR \033[0m] Invalid input..."
 				exit 1
 				;;
 	esac
@@ -196,10 +196,10 @@ if [ "${userinput}" == "nodejs"  ] && [ "${userinput2}" == "install"  ]; then
 				echo -e "[1;32m OK \033[0m] NodeJS installed"
 				;;
 		  [nN][oO]|[nN])
-				echo "Quiting"
+				echo "[1;33m WARN \033[0m] Quiting"
 				;;
 		  *)
-				echo "Invalid input..."
+				echo "[1;31m ERROR \033[0m] Invalid input..."
 				exit 1
 				;;
 	esac
@@ -213,6 +213,7 @@ if [ "${userinput}" == "sudoers"  ] && [ "${userinput2}" == "add"  ]; then
 	echo -e "Enter user name"
 	read user
 	usermod -aG sudo $user
+	echo -e ""
 	echo -e "$user added to sudoers"
 	echo -e "================================="
 fi
@@ -224,8 +225,8 @@ if [ "${userinput}" == "port"  ] && [ "${userinput2}" == "open"  ]; then
 	echo -e "Enter port"
 	read port
 	sudo ufw allow $port
-	echo -e "[\033[1;32m OK \033[0m] $port port open"
 	echo -e ""
+	echo -e "[\033[1;32m OK \033[0m] $port port open"
 	echo -e "================================="
 fi
 
@@ -236,6 +237,7 @@ if [ "${userinput}" == "port"  ] && [ "${userinput2}" == "close"  ]; then
 	echo -e "Enter port"
 	read port
 	sudo ufw deny $port
+	echo -e ""
 	echo -e "[\033[1;32m OK \033[0m] $port port closed"
 	echo -e "================================="
 fi
@@ -254,10 +256,10 @@ if [ "${userinput}" == "java"  ] && [ "${userinput2}" == "install"  ]; then
 				echo -e "Check java version: java --version"
 				;;
 		  [nN][oO]|[nN])
-				echo "Quiting"
+				echo "[1;33m WARN \033[0m] Quiting"
 				;;
 		  *)
-				echo "Invalid input..."
+				echo "[1;31m ERROR \033[0m] Invalid input..."
 				exit 1
 				;;
 	esac
@@ -345,10 +347,10 @@ if [ "${userinput}" == "linuxgsm"  ] && [ "${userinput2}" == "install"  ]; then
 					echo -e "[1;32m OK \033[0m] LinuxGSM Minecraft java edition installation done."
 					;;
 			  [nN][oO]|[nN])
-					echo "Quiting"
+					echo "[1;33m WARN \033[0m] Quiting"
 					;;
-			  *)
-					echo "Invalid input..."
+		 	  *)
+					echo "[1;31m ERROR \033[0m] Invalid input..."
 					exit 1
 					;;
 		esac
@@ -385,10 +387,10 @@ if [ "${userinput}" == "linuxgsm"  ] && [ "${userinput2}" == "install"  ]; then
 						echo -e "[1;32m OK \033[0m] LinuxGSM Rust installation done."
 						;;
 				  [nN][oO]|[nN])
-						echo "Quiting"
+						echo "[1;33m WARN \033[0m] Quiting"
 						;;
-				  *)
-						echo "Invalid input..."
+		 		  *)
+						echo "[1;31m ERROR \033[0m] Invalid input..."
 						exit 1
 						;;
 			esac
@@ -424,10 +426,10 @@ if [ "${userinput}" == "linuxgsm"  ] && [ "${userinput2}" == "install"  ]; then
 						echo -e "[1;32m OK \033[0m] LinuxGSM 7 Days to die installation done."
 						;;
 				  [nN][oO]|[nN])
-						echo "Quiting"
+						echo "[1;33m WARN \033[0m] Quiting"
 						;;
-				  *)
-						echo "Invalid input..."
+		 		  *)
+						echo "[1;31m ERROR \033[0m] Invalid input..."
 						exit 1
 						;;
 			esac
